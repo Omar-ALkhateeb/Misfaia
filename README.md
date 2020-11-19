@@ -8,6 +8,6 @@ dataset used [Arabic Sentiment Twitter Corpus](https://www.kaggle.com/mksaad/ara
 
 
 ### todo
-[X] create basic model with +60% accuracy
-[] wrap around an api for ease of use
-[] add a bad words filter
+- [X] create basic model with +60% accuracy
+- [ ] wrap around an api for ease of use
+- [ ] add a bad words filter
