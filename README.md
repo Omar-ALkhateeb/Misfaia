@@ -22,3 +22,7 @@ dataset used [Arabic Sentiment Twitter Corpus](https://www.kaggle.com/mksaad/ara
 - /removeCurses --- dictionary
 - /getPrecentage --- AI
 - /cleanCorpus --- remove punctuation
+
+
+#### notice
+this model was built using tensorflow '2.2.0' so if you have any problems with it i recommend changing to this specific version 
