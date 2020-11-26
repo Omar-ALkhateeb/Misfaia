@@ -20,9 +20,9 @@ An Open Source API to help filter arabic text and check for toxicity and/or offe
 
 
 ### routes
-- /removeCurses --- dictionary
+- /removeCurses --- bad word filter
 - /getPrecentage --- AI
-- /cleanCorpus --- remove punctuation
+- /cleanCorpus --- remove punctuation and other chars
 
 
 #### notice
