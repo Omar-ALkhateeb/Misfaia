@@ -1,9 +1,10 @@
 # Arabic sentimenet analysis API
-an public use api to help filter data and check for toxicity and/or offensiveness in arabic input
+An Open Source API to help filter arabic text and check for toxicity and/or offensiveness
 
 
 ### aknowledgements
-dataset used [Arabic Sentiment Twitter Corpus](https://www.kaggle.com/mksaad/arabic-sentiment-twitter-corpus)
+ - dataset used [Arabic Sentiment Twitter Corpus](https://www.kaggle.com/mksaad/arabic-sentiment-twitter-corpus)
+ - inspired by every other bad word filter and the lack of ararbic one's (as far as i know)
 
 
 
