@@ -32,7 +32,7 @@ print('Vocabulary size: {}'.format(len(vectorize_layer.get_vocabulary())))
 
 
 X_train, X_test, y_train, y_test = model_selection.train_test_split(df['Feed'],
-                                                                    df['Sentiment'], test_size=0.30)
+                                                                    df['Sentiment'], test_size=0.20)
 
 # print(vectorize_text(X_train))
 train_ds = vectorize_text(X_train, vectorize_layer)

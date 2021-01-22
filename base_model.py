@@ -9,7 +9,7 @@ import tensorflow as tf
 import string
 from tensorflow.keras.layers.experimental.preprocessing import TextVectorization
 
-tokens = 80343
+tokens = 10000
 
 tf.get_logger().setLevel('ERROR')
 
@@ -17,7 +17,7 @@ tf.get_logger().setLevel('ERROR')
 # create and return the basic model with no vecorization
 def create_base_model(X_train, X_test, y_train, y_test):
 
-    embedding_dim = 16  # 16
+    embedding_dim = 60  # 16
 
     model = tf.keras.Sequential([
         Embedding(tokens + 1, embedding_dim),
@@ -32,7 +32,7 @@ def create_base_model(X_train, X_test, y_train, y_test):
                   optimizer='adam',
                   metrics=tf.metrics.BinaryAccuracy(threshold=0.0))
 
-    epochs = 5  # 20
+    epochs = 200  # 20
     history = model.fit(X_train, y_train, validation_data=(
         X_test, y_test), epochs=epochs)
 
