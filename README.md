@@ -2,7 +2,7 @@
 
 ## the Arabic toxicity filter API
 
-![Misfaya](https://imgur.com/EnBKbAp)
+![Misfaya](https://i.imgur.com/EnBKbAp.jpeg)
 
 An Open Source API to help filter arabic text and check for toxicity and/or offensiveness
 
