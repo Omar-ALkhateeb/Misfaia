@@ -13,6 +13,9 @@ from export_model import create_export_model
 
 df = pd.read_csv("filtered_ar_tweets.csv", encoding="utf-8")
 
+df = df.dropna()
+df = df.sample(frac=1)
+
 print(df.head())
 
 
@@ -38,7 +41,7 @@ val_ds = vectorize_text(X_test, vectorize_layer)
 
 train_ds
 model, acc, val_acc, loss, val_loss, epochs = create_base_model(
-    train_ds, val_ds, y_train, y_test, 100000)
+    train_ds, val_ds, y_train, y_test)
 # "bo" is for "blue dot"
 plt.plot(epochs, loss, 'bo', label='Training loss')
 # b is for "solid blue line"
@@ -62,6 +65,9 @@ plt.show()
 
 
 export_model = create_export_model(vectorize_layer)
+
+
+# print(X_test[0])
 
 # Test it with `raw_test_ds`, which yields raw strings
 loss, accuracy = export_model.evaluate(X_test, y_test)

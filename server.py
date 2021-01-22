@@ -10,9 +10,11 @@ from base_model import create_base_model, create_vectorization_layer
 from export_model import create_export_model
 
 
+# serialize later w pickle
 df = pd.read_csv("filtered_ar_tweets.csv", encoding="utf-8")
 vectorize_layer, _ = create_vectorization_layer(df['Feed'])
 
+# can't be resialized yet (i think)
 model = create_export_model(vectorize_layer)
 
 # init server
@@ -59,6 +61,7 @@ def removeCurses(words=None):
 @app.route('/getPrecentage/<words>')
 def getPrecentage(words=None):
     # workaround tensorflow needing array input
+    print(words)
     return str(model.predict([words, words, words])[0][0])
     # print(model.predict([words, words, words]))
 

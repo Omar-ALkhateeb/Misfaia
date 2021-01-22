@@ -5,9 +5,6 @@ import tensorflow as tf
 import pandas as pd
 
 
-df = pd.read_csv("filtered_ar_tweets.csv", encoding="utf-8")
-
-
 def create_export_model(vectorize_layer):
     # loading only base model beacuse saving vector layer isnt implemented
 
