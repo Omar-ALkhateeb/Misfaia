@@ -3,12 +3,11 @@
 
 import matplotlib.pyplot as plt
 from sklearn import model_selection
-import numpy as np
-# import os
 import re
 import pandas as pd
 from base_model import create_base_model, create_vectorization_layer
 from export_model import create_export_model
+import pickle
 
 
 df = pd.read_csv("filtered_ar_tweets.csv", encoding="utf-8")
@@ -85,6 +84,13 @@ examples = [
 
 print(export_model.predict(examples))
 
+
+# # saving the serialize seperately bc we cant call model.save on it
+# f = open('vectotizer.bin', 'wb')
+# pickle.dump(vectorize_layer, f)
+
+# # 3.3. Close file
+# f.close()
 
 # saving only base model beacuse saving vector layer isnt implemented
 model.save('saved_model/my_model.h5',

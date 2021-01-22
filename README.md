@@ -1,4 +1,8 @@
-# Arabic sentimenet analysis API
+# Misfaya
+
+## the Arabic toxicity filter API
+
+![Misfaya](https://imgur.com/EnBKbAp)
 
 An Open Source API to help filter arabic text and check for toxicity and/or offensiveness
 
@@ -11,10 +15,12 @@ An Open Source API to help filter arabic text and check for toxicity and/or offe
 
 - [x] create basic model with +60% accuracy
 - [x] wrap around an api for ease of use
-  - [ ] add CORS
+  - [x] add CORS
   - [ ] jwt-auth
-  - [ ] rate-limiter
+  - [x] rate-limiter
+  - [x] security headers
 - [ ] add a bad words filter
+  - [ ] fill the dictionary
 
 ### routes
 

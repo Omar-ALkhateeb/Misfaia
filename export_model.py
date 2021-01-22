@@ -1,8 +1,6 @@
-from base_model import create_vectorization_layer
 from tensorflow.keras.models import load_model
 
 import tensorflow as tf
-import pandas as pd
 
 
 def create_export_model(vectorize_layer):

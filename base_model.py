@@ -1,9 +1,8 @@
 import numpy as np
 # import os
 import re
-import pandas as pd
 
-from tensorflow.keras.layers import Flatten, GlobalAveragePooling1D, Dense, Embedding, Dropout
+from tensorflow.keras.layers import GlobalAveragePooling1D, Dense, Embedding, Dropout
 from tensorflow.keras.models import Sequential
 import tensorflow as tf
 import string
@@ -19,7 +18,7 @@ def create_base_model(X_train, X_test, y_train, y_test):
 
     embedding_dim = 60  # 16
 
-    model = tf.keras.Sequential([
+    model = Sequential([
         Embedding(tokens + 1, embedding_dim),
         Dropout(0.2),
         GlobalAveragePooling1D(),
@@ -58,14 +57,14 @@ def create_base_model(X_train, X_test, y_train, y_test):
 # create the vectorization layer
 def create_vectorization_layer(data):
 
-    def custom_standardization(input_data):
-        stripped_html = tf.strings.regex_replace(input_data, '<br />', ' ')
-        return tf.strings.regex_replace(stripped_html, '[%s]' % re.escape(string.punctuation), '')
+    # def custom_standardization(input_data):
+    #     stripped_html = tf.strings.regex_replace(input_data, '<br />', ' ')
+    #     return tf.strings.regex_replace(stripped_html, '[%s]' % re.escape(string.punctuation), '')
 
     sequence_length = max([len(i) for i in data if type(i) != float])
 
     vectorize_layer = TextVectorization(
-        standardize=custom_standardization,
+        standardize="lower_and_strip_punctuation",
         max_tokens=tokens,
         output_mode='int',
         output_sequence_length=sequence_length)

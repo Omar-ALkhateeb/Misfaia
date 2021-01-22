@@ -1,24 +1,44 @@
+from secure import SecureHeaders
+from flask_cors import CORS
 from flask import Flask
-from tensorflow.keras.layers.experimental.preprocessing import TextVectorization
-import tensorflow as tf
-# import pickle
+import pickle
 import re
-import string
 import pandas as pd
-import numpy as np
-from base_model import create_base_model, create_vectorization_layer
+from base_model import create_vectorization_layer
 from export_model import create_export_model
+import tensorflow as tf
+import string
+
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 
 # serialize later w pickle
 df = pd.read_csv("filtered_ar_tweets.csv", encoding="utf-8")
 vectorize_layer, _ = create_vectorization_layer(df['Feed'])
 
+
 # can't be resialized yet (i think)
 model = create_export_model(vectorize_layer)
-
-# init server
 app = Flask(__name__)
+
+# rate limiter
+limiter = Limiter(
+    app,
+    key_func=get_remote_address,
+    default_limits=["15 per minute"]
+)
+
+
+CORS(app)  # This will enable CORS for all routes
+
+secure_headers = SecureHeaders(csp=True, hsts=False, xfo="DENY")
+
+
+@app.after_request
+def set_secure_headers(response):
+    secure_headers.flask(response)
+    return response
 
 
 examples = [
