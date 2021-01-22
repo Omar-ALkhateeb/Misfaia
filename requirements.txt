@@ -1,6 +1,8 @@
 flask_cors
 flask
-tensorflow==2.2.0
+tensorflow==2.4.0
 pandas
 openpyxl
+secure
+flask_limiter
 numpy
