@@ -1,8 +1,8 @@
-# Misfaya
+# Misfaia
 
 ## the Arabic toxicity filter API
 
-![Misfaya](https://i.imgur.com/EnBKbAp.jpeg)
+![Misfaia](https://i.imgur.com/z5GuJHV.png)
 
 An Open Source API to help filter arabic text and check for toxicity and/or offensiveness
 
