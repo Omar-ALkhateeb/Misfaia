@@ -13,7 +13,7 @@ An Open Source API to help filter arabic text and check for toxicity and/or offe
 
 ### todo
 
-- [x] create basic model with +60% accuracy
+- [x] create basic model with +90% accuracy
 - [x] wrap around an api for ease of use
   - [x] add CORS
   - [ ] jwt-auth
