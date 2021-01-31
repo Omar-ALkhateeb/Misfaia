@@ -1,7 +1,4 @@
 import numpy as np
-# import os
-import re
-
 from tensorflow.keras.layers import GlobalAveragePooling1D, Dense, Embedding, Dropout
 from tensorflow.keras.models import Sequential
 import tensorflow as tf

@@ -7,7 +7,6 @@ import re
 import pandas as pd
 from base_model import create_base_model, create_vectorization_layer
 from export_model import create_export_model
-import pickle
 
 
 df = pd.read_csv("filtered_ar_tweets.csv", encoding="utf-8")
@@ -63,7 +62,7 @@ plt.legend(loc='lower right')
 plt.show()
 
 
-export_model = create_export_model(vectorize_layer)
+export_model = create_export_model(vectorize_layer, model)
 
 
 # print(X_test[0])
@@ -85,13 +84,9 @@ examples = [
 print(export_model.predict(examples))
 
 
-# # saving the serialize seperately bc we cant call model.save on it
-# f = open('vectotizer.bin', 'wb')
-# pickle.dump(vectorize_layer, f)
+model.save('saved_model/base_model.h5',
+           overwrite=True, include_optimizer=False)
 
-# # 3.3. Close file
-# f.close()
-
-# saving only base model beacuse saving vector layer isnt implemented
-model.save('saved_model/my_model.h5',
-           overwrite=True, include_optimizer=True)
+export_model.save('saved_model/full_model.tf',
+                  save_format='tf',
+                  overwrite=True, include_optimizer=False)

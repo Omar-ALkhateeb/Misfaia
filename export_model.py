@@ -1,13 +1,7 @@
-from tensorflow.keras.models import load_model
-
 import tensorflow as tf
 
 
-def create_export_model(vectorize_layer):
-    # loading only base model beacuse saving vector layer isnt implemented
-
-    model = load_model("saved_model/my_model.h5")
-
+def create_export_model(vectorize_layer, model):
     export_model = tf.keras.models.Sequential([
         vectorize_layer,
         model,

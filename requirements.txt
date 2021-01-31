@@ -1,6 +1,6 @@
 flask_cors
 flask
-tensorflow==2.4.0
+tf-nightly
 pandas
 openpyxl
 secure

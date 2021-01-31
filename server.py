@@ -1,25 +1,13 @@
 from secure import SecureHeaders
 from flask_cors import CORS
 from flask import Flask
-import pickle
 import re
-import pandas as pd
-from base_model import create_vectorization_layer
-from export_model import create_export_model
-import tensorflow as tf
-import string
+from tensorflow.keras.models import load_model
 
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
-
-# serialize later w pickle
-df = pd.read_csv("filtered_ar_tweets.csv", encoding="utf-8")
-vectorize_layer, _ = create_vectorization_layer(df['Feed'])
-
-
-# can't be resialized yet (i think)
-model = create_export_model(vectorize_layer)
+model = load_model("saved_model/full_model.tf")
 app = Flask(__name__)
 
 # rate limiter
@@ -41,26 +29,8 @@ def set_secure_headers(response):
     return response
 
 
-examples = [
-    "قليل اخلاق",
-    "المواضيع المثيرة للجدل",
-    "اخي في الله",
-    "السلام عليكم",
-    'ابو الشباب راعي العود ليش ماوزنه في البيت غبا ',
-    "إذا تم العقل نقص الكلام"
-]
-
-
-# TODO
-# update curses list to a txt/csv file
-# add a load handler
-# ingestion engine?
-# logger, security headers, cors
-# auth procces?
-
-
 # proto
-curses = set(['damn', 'crap'])
+curses = set(['كلب', 'حقير'])
 
 # bad word filter
 @app.route('/removeCurses/<words>')
